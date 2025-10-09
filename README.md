@@ -1,10 +1,8 @@
-# IbexRL: Online Learning for HVAC Control with Differentiable MPC
+# Ibex-RL: Interpretable and Scalable Control via Physics-Informed Reinforcement Learning
 
 IbexRL is an advanced control algorithm designed for optimizing HVAC systems in building environments. It leverages a core agent built on Differentiable Model Predictive Control (dMPC), enabling it to learn and adapt its control strategy online.
 
-The framework supports two primary operational paths:
-1.  **Imitation Learning (IL) + Online Learning:** A two-stage process where the agent is first pre-trained to mimic a baseline controller and then refined through online reinforcement learning.
-2.  **Online Learning Only:** A direct approach that uses pre-trained IL parameters to immediately begin the online learning phase.
+The framework follows a paradigm of **Imitation Learning (IL) + Online Learning:** A two-stage process where the agent is first pre-trained to mimic a baseline controller and then refined through online reinforcement learning.
 
 ---
 
@@ -53,7 +51,7 @@ conda activate rl-online
 
 There are two ways to use this framework.
 
-### Path A: Using Pre-Trained Models (Recommended)
+### Path A: Using Pre-Trained Models
 
 This is the quickest way to get started. It skips the imitation learning step and uses pre-computed model parameters to begin online learning directly.
 
