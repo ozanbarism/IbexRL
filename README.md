@@ -36,3 +36,69 @@ conda env create -f imit_environment.yaml
 
 # Activate the environment
 conda activate rl-imit
+```
+
+## 🚀 Usage
+
+There are two ways to use this framework.
+
+### Path A: Using Pre-Trained Models (Recommended)
+
+This is the quickest way to get started. It skips the imitation learning step and uses pre-computed model parameters to begin online learning directly.
+
+1.  **Activate the Environment:** Make sure you are in the `rl-online` Conda environment.
+    ```
+    conda activate rl-online
+    ```
+2.  **Configure the Main Script:** Open `online_learning_main.py`. You will need to configure two sections:
+    * **File Paths:** At the top of the file, update the following paths to match your local machine's directory structure:
+        ```
+        BOPTEST_GYM_PATH = '/path/to/your/project1-boptest-gym'
+        repo_path = '/path/to/your/Ibex_RL/agent'
+        gnu_rl_path = '/path/to/your/Gnu-RL'
+        mpc_path = '/path/to/your/diff_mpc_library'
+        ```
+    * **Hyperparameters:** Inside the `Args` class, you can adjust various parameters for the experiment. See the **Configuration** section below for details on key parameters like learning rates (`state_lr`, `action_lr`), cost calibration (`cost_calibration`), and exploration (`explore`).
+3.  **Run the Experiment:** Execute the script from your terminal. It will loop through the number of runs specified in the code.
+    ```
+    python online_learning_main.py
+    ```
+
+### Path B: Running Everything from Scratch
+
+Follow this path if you want to generate your own imitation learning model before starting the online learning phase.
+
+1.  **Run Imitation Learning:**
+    * Activate the `rl-imit` environment.
+    * Configure and run `train_imit.py`. This will train the agent to mimic the baseline controller data located in the `Gnu-RL` folder and save the initial model parameters.
+2.  **Run Online Learning:**
+    * Follow all the steps in **Path A**.
+    * Crucially, in the `Args` class within `online_learning_main.py`, make sure the `IL_...` parameters (`IL_ETA_FOR_PATH`, `IL_FHAT_EPOCH`, etc.) point to the results of your imitation learning run.
+
+---
+
+## 🔧 Configuration Details
+
+All major hyperparameters are located in the `Args` class inside `online_learning_main.py`.
+
+* `state_lr`: Learning rate for the state-space model parameters (e.g., thermal resistance).
+* `action_lr`: Learning rate for the cost function parameters (`O_hat`, `R_hat`).
+* `cost_calibration`: Set to `True` if you want to learn the cost parameters online. This is necessary if you are using a custom, non-quadratic reward function.
+* `IL_...` **parameters**: These variables tell the script which pre-trained imitation learning model to load as the starting point for the online phase.
+* `explore`: Set to `True` to enable exploration by adding noise to the agent's actions. `sigma_init` controls the initial amount of noise.
+* `folder_name`: The name of the directory where the experiment results will be saved.
+
+---
+
+## 🌍 Adapting to a New Environment
+
+To apply this agent to a different BOPTEST environment, you need to modify `online_learning2.py`.
+
+1.  Open `online_learning2.py`.
+2.  Navigate to the `test_loop` function.
+3.  Update the following variable definitions to match the observation and control signals of your new environment:
+    * `state_name`
+    * `dist_name`
+    * `ctrl_name`
+    * `target_name`
+    * The `boptest_obs_config_for_env` dictionary, which defines the names and ranges of all variables to be pulled from the environment.
