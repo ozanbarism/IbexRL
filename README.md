@@ -38,6 +38,18 @@ conda env create -f imit_environment.yaml
 conda activate rl-imit
 ```
 
+### 2. For Online Learning
+
+To run the main online learning experiments, create and activate the `rl-online` environment:
+```bash
+Create the environment from the .yaml file
+conda env create -f online_environment.yaml
+
+Activate the environment
+conda activate rl-online
+```
+
+
 ## 🚀 Usage
 
 There are two ways to use this framework.
