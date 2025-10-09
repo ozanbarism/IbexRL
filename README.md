@@ -99,6 +99,12 @@ All major hyperparameters are located in the `Args` class inside `online_learnin
 * `explore`: Set to `True` to enable exploration by adding noise to the agent's actions. `sigma_init` controls the initial amount of noise.
 * `folder_name`: The name of the directory where the experiment results will be saved.
 
+### Reward Function: 
+We test using two different rewards. In utils.py: 
+* R_func(): this is just the negative of the quadratic cost function. This is our reward when we are NOT doing cost calibration.
+* non_quadratic_cumulative_reward(): This is the non quadratic reward we use for cost calibration. Basically, O_occ and R values are updated to maximize this reward so the quadratic cost is approximated in a way that maximizes the non-quadratic cost.
+One should change them to test different rewards.
+
 ---
 
 ## 🌍 Adapting to a New Environment
