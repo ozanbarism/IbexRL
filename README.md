@@ -4,7 +4,7 @@ IbexRL is an advanced control algorithm designed for optimizing HVAC systems in 
 
 The framework follows a paradigm of **Imitation Learning (IL) + Online Learning:** A two-stage process where the agent is first pre-trained to mimic a baseline controller and then refined through online reinforcement learning.
 
-![Architecture of the IbexRL controller](ibexrl_fig.png)
+![Architecture of the IbexRL controller](ibexrl_fig.pdf)
 ---
 
 ## 🏛️ Repository Structure
@@ -24,10 +24,10 @@ Here are the key files and directories in this project:
 This project was developed using the following key packages. We extend our gratitude to their developers.
 
 * **BOPTEST-GYM**
-    This is a simulation and testing framework for building performance assessments. The expert controller data used for imitation learning in this research was generated using a BOPTEST environment. For more details, please visit the official **[BOPTEST website]((https://github.com/ibpsa/project1-boptest-gym))**. 🏢
+    This is a simulation and testing framework for building performance assessments. The expert controller data used for imitation learning in this research was generated using a BOPTEST environment. For more details, please visit the official **[BOPTEST website](https://github.com/ibpsa/project1-boptest-gym)**. 🏢
 
 * **diff-mpc**
-    This package is a fast and differentiable model predictive control (MPC) solver for PyTorch. The required library files are already included in the `./diff_mpc` directory, so no separate installation is necessary. For more information on the solver, please see the original **[diff-mpc repository]((https://github.com/locuslab/mpc.pytorch))**. ⚙️
+    This package is a fast and differentiable model predictive control (MPC) solver for PyTorch. The required library files are already included in the `./diff_mpc` directory, so no separate installation is necessary. For more information on the solver, please see the original **[diff-mpc repository](https://github.com/locuslab/mpc.pytorch)**. ⚙️
 
 ---
 
