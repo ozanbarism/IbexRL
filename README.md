@@ -101,6 +101,14 @@ We test using two different rewards. In utils.py:
 * non_quadratic_cumulative_reward(): This is the non quadratic reward we use for cost calibration. Basically, O_occ and R values are updated to maximize this reward so the quadratic cost is approximated in a way that maximizes the non-quadratic cost.
 One should change them to test different rewards.
 
+
+### Data Sources
+The training data is derived from two primary files:
+
+observations.csv: Contains the 75 days of observation data sampled at 30-minute intervals from a baseline BOPTEST controller.
+results_tests_test_constant_original/results_sim_0.csv: Provides higher-granularity simulation data from the same controller. The action data is extracted from this file and resampled to 30-minute intervals by the agent/train_imit.py script. 
+
+
 ---
 
 ## 🌍 Adapting to a New Environment
