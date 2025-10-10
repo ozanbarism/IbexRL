@@ -123,5 +123,6 @@ To apply this agent to a different BOPTEST environment, you need to modify `onli
     * `ctrl_name`
     * `target_name`
     * The `boptest_obs_config_for_env` dictionary, which defines the names and ranges of all variables to be pulled from the environment.
+4. Update the physics informed model structure in `IbexAgent.py`. This is dependent on your inputs such as state, disturbances and control variables. Thus, it needs to be changed for a new environment.
   
 
