@@ -4,7 +4,7 @@ IbexRL is an advanced control algorithm designed for optimizing HVAC systems in 
 
 The framework follows a paradigm of **Imitation Learning (IL) + Online Learning:** A two-stage process where the agent is first pre-trained to mimic a baseline controller and then refined through online reinforcement learning.
 
-![Architecture of the IbexRL controller](ibexrl_fig.pdf)
+![Architecture of the IbexRL controller](IbexRL/ibexrl.png)
 ---
 
 ## 🏛️ Repository Structure
